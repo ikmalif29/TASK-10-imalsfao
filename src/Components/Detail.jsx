@@ -10,13 +10,9 @@ export default function Detail() {
     const [isFavorite, setIsFavorite] = useState(false);
     const [isModalOpen, setIsModalOpen] = useState(false); // State for the modal
 
-    const toggleFavorite = () => {
-        setIsFavorite((prev) => !prev);
-    };
+    const toggleFavorite = () => setIsFavorite((prev) => !prev);
 
-    const toggleModal = () => {
-        setIsModalOpen((prev) => !prev); // Toggle modal visibility
-    };
+    const toggleModal = () => setIsModalOpen((prev) => !prev); // Toggle modal visibility
 
     if (!book) {
         return (
@@ -82,30 +78,29 @@ export default function Detail() {
                     </button>
                 </div>
 
-                {/* Modal for More Info */}
                 {isModalOpen && (
                     <div className="fixed inset-0 flex items-center justify-center bg-black/50">
                         <div className="bg-white rounded-lg shadow-lg p-6 max-w-md w-full">
-                            <h2 className="text-2xl font-bold mb-4">Book Information</h2>
+                            <h2 className="text-2xl text-black font-bold mb-4">{book.judul}</h2>
+                            <img
+                                src={book.foto}
+                                alt={book.judul}
+                                className="w-full h-64 object-cover rounded-md mb-4"
+                            />
+                            
                             <p>
-                                <span className="font-semibold">Title:</span> {book.judul}
+                                <span className="text-black font-semibold">Publisher: {book.penerbit}</span>
                             </p>
                             <p>
-                                <span className="font-semibold">Author:</span> {book.penulis}
+                                <span className="text-black font-semibold">Year: {book.tahunTerbit}</span> 
                             </p>
                             <p>
-                                <span className="font-semibold">Publisher:</span> {book.penerbit}
-                            </p>
-                            <p>
-                                <span className="font-semibold">Year:</span> {book.tahunTerbit}
-                            </p>
-                            <p>
-                                <span className="font-semibold">Genre:</span> {book.genre}
+                                <span className="text-black font-semibold">Genre:  {book.genre}</span>
                             </p>
                             <p className="mt-4">
-                                <span className="font-semibold">Synopsis:</span> {book.sinopsis}
+                                <span className="text-black font-semibold">Synopsis: {book.sinopsis}</span> 
                             </p>
-                            <div className="flex justify-end mt-4">
+                            <div className="flex justify-end mt-6">
                                 <button
                                     className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
                                     onClick={toggleModal}
