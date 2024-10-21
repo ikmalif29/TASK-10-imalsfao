@@ -37,8 +37,9 @@ export default function Book() {
                 Book Collection
             </h1>
 
-            <div className="w-full flex justify-between items-center my-6">
-                <div className="relative group">
+            <div className="w-full flex flex-col md:flex-row md:justify-between md:items-center gap-4 my-6">
+                {/* Search Input with Icon */}
+                <div className="relative group flex items-center">
                     <img
                         src="https://cdn-icons-png.flaticon.com/512/954/954591.png"
                         alt="Search Icon"
@@ -49,23 +50,27 @@ export default function Book() {
                         onChange={(e) => setSearch(e.target.value)}
                         placeholder="Search..."
                         className="absolute top-0 left-0 w-64 h-10 transform -translate-x-10 opacity-0 pointer-events-none 
-                                    group-hover:translate-x-10 group-hover:opacity-100 group-hover:pointer-events-auto 
-                                    transition-all duration-500 ease-in-out rounded-lg pl-3 shadow-md"
+                       group-hover:translate-x-10 group-hover:opacity-100 group-hover:pointer-events-auto 
+                       transition-all duration-500 ease-in-out rounded-lg pl-3 shadow-md
+                       focus:outline-none md:w-72"
                     />
                 </div>
 
-                {/* Sorting Dropdown */}
-                <select
-                    value={sortType}
-                    onChange={(e) => setSortType(e.target.value)}
-                    className="p-2 rounded-lg shadow-md bg-white text-gray-800"
-                >
-                    <option value="judul-asc">Sort by Name (A-Z)</option>
-                    <option value="judul-desc">Sort by Name (Z-A)</option>
-                    <option value="tahunTerbit-asc">Sort by Year (Ascending)</option>
-                    <option value="tahunTerbit-desc">Sort by Year (Descending)</option>
-                </select>
+                {/* Sort Dropdown */}
+                <div className="w-full md:w-auto">
+                    <select
+                        value={sortType}
+                        onChange={(e) => setSortType(e.target.value)}
+                        className="w-full md:w-auto p-2 rounded-lg shadow-md bg-white text-gray-800"
+                    >
+                        <option value="judul-asc">Sort by Name (A-Z)</option>
+                        <option value="judul-desc">Sort by Name (Z-A)</option>
+                        <option value="tahunTerbit-asc">Sort by Year (Ascending)</option>
+                        <option value="tahunTerbit-desc">Sort by Year (Descending)</option>
+                    </select>
+                </div>
             </div>
+
 
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
                 {filterData.map((book) => (
